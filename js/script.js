@@ -984,6 +984,38 @@ function init() {
 
 document.addEventListener("DOMContentLoaded", init);
 
+window.onload = function () {
+  loadContent(); // Load content when the page first loads
+};
+
+window.onhashchange = function () {
+  loadContent(); // Load content when the hash changes
+};
+
+function loadContent() {
+  let hash = window.location.hash.substring(1) || "home"; // Default to 'home' if no hash is set
+  let contentDiv = document.getElementById("content"); // Find the content element
+
+  contentDiv.innerHTML = ""; // Clear the content
+
+  switch (hash) {
+    case "home":
+      contentDiv.innerHTML =
+        "<h1>Home Page</h1><p>Welcome to the Home Page.</p>";
+      break;
+    case "about":
+      contentDiv.innerHTML =
+        "<h1>About Page</h1><p>Learn more about us on this page.</p>";
+      break;
+    case "contact":
+      contentDiv.innerHTML =
+        "<h1>Contact Page</h1><p>Contact us at contact@example.com.</p>";
+      break;
+    default:
+      contentDiv.innerHTML = "<h1>404</h1><p>Page not found.</p>";
+  }
+}
+
 window.addEventListener("hashchange", function () {
   route();
 });
