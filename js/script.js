@@ -1,3 +1,5 @@
+alert("JavaScript is working");
+console.log("script.js loaded");
 const global = {
   currentPage: window.location.pathname,
   search: {
